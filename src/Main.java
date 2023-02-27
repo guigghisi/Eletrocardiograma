@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Main {
@@ -40,14 +37,37 @@ public class Main {
                 if (calculo < distanciaMinima && calculo != 0) {
                     distanciaMinima = calculo;
                 }
-                System.out.println("Array2" + subArray2);
             }
             menoresDistancias.add(distanciaMinima);
-            System.out.println("Array1" + subArray);
 
         }
         System.out.println(menoresDistancias);
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter("menores_distancias.txt");
+        } catch (IOException e) {
+            System.out.println("Erro ao criar arquivo de saída: " + e.getMessage());
+        }
+
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+        for (double distancia : menoresDistancias) {
+            try {
+                bufferedWriter.write(Double.toString(distancia));
+                bufferedWriter.newLine();
+            } catch (IOException e) {
+                System.out.println("Erro ao escrever no arquivo de saída: " + e.getMessage());
+            }
+        }
+
+        try {
+            bufferedWriter.close();
+            fileWriter.close();
+        } catch (IOException e) {
+            System.out.println("Erro ao fechar arquivo de saída: " + e.getMessage());
+        }
     }
+
 
 }
 
