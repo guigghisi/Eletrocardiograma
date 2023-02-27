@@ -35,7 +35,7 @@ public class Main {
                 }
                 calculo = Math.sqrt(calculo);
                 if (calculo < distanciaMinima && calculo != 0) {
-                    distanciaMinima = calculo;
+                    distanciaMinima = Math.round(calculo * 10.0) / 10.0;
                 }
             }
             menoresDistancias.add(distanciaMinima);
