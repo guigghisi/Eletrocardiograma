@@ -6,7 +6,7 @@ public class Main {
         File file = new File("src/array.txt");
         int intervalo = 4;
         ArrayList<Double> valores = new ArrayList<>();
-
+        long start = System.currentTimeMillis();
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             String linhaAtual;
@@ -61,11 +61,15 @@ public class Main {
         }
 
         try {
+
             bufferedWriter.close();
             fileWriter.close();
         } catch (IOException e) {
             System.out.println("Erro ao fechar arquivo de saída: " + e.getMessage());
         }
+
+        long elapsed = System.currentTimeMillis() - start;
+        System.out.println(elapsed);
     }
 
 
