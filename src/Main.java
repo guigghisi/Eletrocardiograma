@@ -3,10 +3,10 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        long start = System.currentTimeMillis();
         File file = new File(args[0]);
         int intervalo = Integer.parseInt(args[1]);
         ArrayList<Double> valores = new ArrayList<>();
-        long start = System.currentTimeMillis();
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
             String linhaAtual;
